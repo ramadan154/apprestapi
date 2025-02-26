@@ -30,3 +30,33 @@ exports.tampildataid = function (req, res) {
             }
         });
 };
+
+//menambahkan data pengguna
+exports.tambahData = function(req,res) {
+    var nama_pengguna = req.body.nama_pengguna;
+    var email = req.body.email;
+    var password = req.body.password;
+
+    connection.query('INSERT INTO pengguna (nama_pengguna, email, password) VALUES(?,?,?)',
+        [nama_pengguna, email, password],
+        function(error, rows, fields){
+            if(error){
+                console.log(error);
+            }else{
+                response.ok("Berhasil Menambahkan Data!", res)
+            }
+        });
+};
+
+//Menghapus data
+exports.hapusData = function (req, res) {
+    var id_pengguna = req.body.id_pengguna;
+    connection.query = ('DELETE FROM pengguna WHERE id_pengguna=?', [id_pengguna],
+        function(error, rows, fields){
+            if(error){
+                console.log(error);
+            }else{
+                response.ok("Berhasil Menghapus Data!", res)
+            }
+        });
+}

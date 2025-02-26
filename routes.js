@@ -9,4 +9,8 @@ module.exports = function(app){
         .get(jsonku.tampilsemuadata);
     app.route('/tampil/:id')
         .get(jsonku.tampildataid);
+    app.route('/tambah')
+        .post(jsonku.tambahData);
+    app.route('/hapus')
+        .delete(jsonku.hapusData);
 }

@@ -50,13 +50,13 @@ exports.tambahData = function(req,res) {
 
 //Menghapus data
 exports.hapusData = function (req, res) {
-    var id_pengguna = req.body.id_pengguna;
-    connection.query = ('DELETE FROM pengguna WHERE id_pengguna=?', [id_pengguna],
+    var id = req.body.id_pengguna;
+    connection.query('DELETE FROM pengguna WHERE id_pengguna = ?', [id],
         function(error, rows, fields){
             if(error){
                 console.log(error);
             }else{
-                response.ok("Berhasil Menghapus Data!", res)
+                response.ok("Berhasil Menghapus Data!", res);
             }
         });
-}
+};
